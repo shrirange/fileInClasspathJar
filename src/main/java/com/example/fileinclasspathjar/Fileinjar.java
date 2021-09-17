@@ -1,6 +1,5 @@
 package com.example.fileinclasspathjar;
 
-import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.io.*;
 
@@ -25,8 +24,12 @@ public class Fileinjar implements EnvironmentPostProcessor {
                     new InputStreamReader(is, StandardCharsets.UTF_8);
              BufferedReader reader = new BufferedReader(streamReader)) {
 
-            String line;
+            String line = null;
+            
             while ((line = reader.readLine()) != null) {
+            	FileInputStream f = (FileInputStream) getClass().getClassLoader().getResourceAsStream((line);
+                if (f.getFD().valid())
+                	System.out.println("FOUND FILE");
                 System.out.println("fdfdfd" + line);
             }
 
